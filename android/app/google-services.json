@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "949561833525",
+    "firebase_url": "https://viscafootballregistration.firebaseio.com",
+    "project_id": "viscafootballregistration",
+    "storage_bucket": "viscafootballregistration.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:949561833525:android:d78b899c9a64588bd6597c",
+        "android_client_info": {
+          "package_name": "com.example.footballApp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "949561833525-1n92np2k4e9epe880lu5lk0ke27g9bvl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARI7j7weANTHr9YhGdvMFjRNu6M5-nHfo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "949561833525-1n92np2k4e9epe880lu5lk0ke27g9bvl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
