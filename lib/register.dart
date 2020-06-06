@@ -3,6 +3,7 @@ import 'package:streamingservice/RLConsole.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:streamingservice/main.dart';
 //import 'package:streamingservice/ui/widgets/bezierContainer.dart';
 //import 'package:streamingservice/ui/widgets/route.dart';
 //import 'package:streamingservice/core/models/customicon.dart';
@@ -428,7 +429,7 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
                             color: Colors.white,
                           ),),
                         color: Colors.cyan,
-                        onPressed: () async{
+                        onPressed: () {
 
                           if (!_formKey.currentState.validate()){
                             return;
@@ -481,6 +482,7 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
                                   "Password": password,
                                   "Username": username,
                                 }
+
                             );
 
 //                            final CollectionReference _usersCollectionReference = Firestore.instance.collection("Visca_Users");
@@ -489,6 +491,11 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
 //                              await _usersCollectionReference.document(user.id)
 //                            }
                             n=n+1;
+                            Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => MyHomePage()
+                                )
+                            );
                           }
                         },
                       )
