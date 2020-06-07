@@ -80,7 +80,20 @@ class _MyLoginPageState extends State<MyLoginPage>{
               children: <Widget>[
                 TextFormField(
                   decoration: InputDecoration(
-                      labelText: 'E-mail', hintText: "john.doe@gmail.com"),
+                      labelText: 'E-mail',
+                      hintText: "john.doe@gmail.com",
+                    fillColor: Colors.white,
+                    filled: true,
+                    labelStyle:
+                    TextStyle(color: Colors.black, letterSpacing: 1.3),
+                    //                    errorText: "* Please enter a valid E-mail address",
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.red,
+                      ),
+                    ),
+                    border: OutlineInputBorder(),
+                  ),
                   controller: emailInputController,
                   keyboardType: TextInputType.emailAddress,
                   validator: emailValidator,
@@ -93,6 +106,17 @@ class _MyLoginPageState extends State<MyLoginPage>{
                       onPressed: _toggleVisibility,
                       icon: _isHid ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
                     ),
+                    fillColor: Colors.white,
+                    filled: true,
+                    labelStyle:
+                    TextStyle(color: Colors.black, letterSpacing: 1.3),
+                    //                    errorText: "* Please enter a valid E-mail address",
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: BorderSide(
+                        color: Colors.red,
+                      ),
+                    ),
+                    border: OutlineInputBorder(),
                   ),
                   controller: pwdInputController,
 
@@ -107,7 +131,7 @@ class _MyLoginPageState extends State<MyLoginPage>{
 //                      color: Colors.white,
 //                    ),),
 //                  color: Colors.cyan,
-                  
+
                 ),
 
 
