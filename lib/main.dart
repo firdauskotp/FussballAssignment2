@@ -3,6 +3,7 @@ import 'package:streamingservice/RLConsole.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:streamingservice/login.dart';
 import 'package:streamingservice/register.dart';
 //import 'package:streamingservice/ui/widgets/bezierContainer.dart';
 //import 'package:streamingservice/ui/widgets/route.dart';
@@ -108,11 +109,7 @@ class _MyHomePageState extends State<MyHomePage>{
                     SizedBox(
                       height:80.0
                     ),
-                    CircleAvatar(
-      //                backgroundColor: Colors.lightGreenAccent,
-                      child: Image.asset("images/placeholder.jpg"),
-                      radius:50.0,
-                    ),
+
                     Padding(
                       padding: EdgeInsets.symmetric(vertical:16.0, horizontal: 16.0),
                       child: Divider(),
@@ -126,7 +123,13 @@ class _MyHomePageState extends State<MyHomePage>{
                               color: Colors.white,
                             ),),
                           color: Colors.grey,
-
+                          onPressed: (){
+                            Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => MyLoginPage()
+                                )
+                            );
+                          },
                         )
                     ),
                     Padding(

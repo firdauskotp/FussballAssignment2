@@ -64,6 +64,7 @@ flutter:
     - images/register_wallpaper.jpg
     - images/placeholder.jpg
     - images/FACup.jpg
+    - images/EPL_Trophy.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

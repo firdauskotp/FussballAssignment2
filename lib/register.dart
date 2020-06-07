@@ -4,63 +4,18 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:streamingservice/main.dart';
+import 'dart:math';
 //import 'package:streamingservice/ui/widgets/bezierContainer.dart';
 //import 'package:streamingservice/ui/widgets/route.dart';
 //import 'package:streamingservice/core/models/customicon.dart';
 //void main(List<String> arguments) {
-//
-//  print('Hello world: ${RLConsole.calculate()}!');
-//}
 
-//void main() => runApp(new MyApp());
-
-//
-//class MyApp extends StatelessWidget{
-//  @override
-//  Widget build(BuildContext context){
-//    return new MaterialApp(
-////      title: "Register",
-//      debugShowCheckedModeBanner: false,
-//      theme: ThemeData(
-//          appBarTheme: AppBarTheme(
-//            color: Color(0xFF151026),
-//          )),
-//      home: new MyHomePage(),
-//    );
-//  }
-//}
-
-//class ImageInputAdapter {
-//  /// Initialize from either a URL or a file, but not both.
-//  ImageInputAdapter({
-//    this.file,
-//    this.url
-//  }) : assert(file != null || url != null), assert(file != null && url == null), assert(file == null && url != null);
-//
-//  /// An image file
-//  final File file;
-//  /// A direct link to the remote image
-//  final String url;
-//
-//  /// Render the image from a file or from a remote source.
-//  Widget widgetize() {
-//    if (file != null) {
-//      return Image.file(file);
-//    } else {
-//      return FadeInImage(
-//        image: NetworkImage(url),
-//        placeholder: AssetImage("assets/images/placeholder.png"),
-//        fit: BoxFit.contain,
-//      );
-//    }
-//  }
-//}
 class MyRegisterPage extends StatefulWidget{
 //  MyHomePage({Key key, this.title}) : super(key: key);
   final String title = "Register";
 
-
-
+  MyRegisterPage({Key key, this.uid}): super(key:key);
+  final String uid;
   @override
   _MyRegisterPageState createState() => _MyRegisterPageState();
 }
@@ -80,7 +35,9 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
   int n = 1;
 
 
+
   final firestoreInstance = Firestore.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
 
 
@@ -429,7 +386,7 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
                             color: Colors.white,
                           ),),
                         color: Colors.cyan,
-                        onPressed: () {
+                        onPressed: () async{
 
                           if (!_formKey.currentState.validate()){
                             return;
@@ -438,6 +395,8 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
 //                              return errorMessage;
 //                            }
                           } else {
+                            Random random = new Random();
+                            int rng2 = random.nextInt(10000);
                             _formKey.currentState.save();
 
                             print(username);
@@ -464,16 +423,25 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
 //                            if (n = null){
 //                              n=1;
 //                            }
-
+//
 //                            final snapShot = await Firestore.instance.collection("Visca_Users").document("User_ID_N0$n").get();
 //
 //                            if (snapShot == null || !snapShot.exists){
 //                              n=n+1;
+//                              if (snapShot.documentID == true){
+//                                n=1;
+//                              } else {
+//                                n=n+1;
+//                              }
 //                            } else if (snapShot != null || snapShot.exists){
 //
 //                              n=1;
 //                            }
-                            Firestore.instance.collection("Visca_Users").document("User_ID_No$n").setData(
+
+                            Firestore.instance.document('collection/docId').get().then((onValue){
+                              onValue.exists ? n=n+1:n=1;//exists : //not exist ;
+                            });
+                            Firestore.instance.collection("Visca_Users").document("User_ID_No$rng2").setData(
                                 {
                                   "Club": club,
                                   "E-mail": email,
@@ -484,6 +452,8 @@ class _MyRegisterPageState extends State<MyRegisterPage>{
                                 }
 
                             );
+
+
 
 //                            final CollectionReference _usersCollectionReference = Firestore.instance.collection("Visca_Users");
 //                            final FirebaseAuth
